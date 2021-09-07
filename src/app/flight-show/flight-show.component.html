@@ -1,0 +1,80 @@
+<style>
+    .wrapper{
+    min-height: 90vh;
+  }
+  a{
+     color:  #FF8040;
+    }
+    
+    </style>
+  <div class="view" style="background-image: url('assets/bg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <nav class="navbar navbar-dark">
+      <div class="navbar-brand">
+        <img src="assets/aeroplane.png" width="40" height="40" class="d-inline-block align-top" alt="">
+       
+      </div>
+  </nav>  
+  
+  <div class="container">
+    <div class="row text-right text-white">
+      <h1>Flight Search</h1>
+    </div>
+    <hr>
+    <form [formGroup]="flightSearchForm" class="row" (ngSubmit)="onSubmit()">
+      <div class="form-group col-md-3">
+        <label for="pwd">Source:</label>
+        <input type="text" class="form-control" formControlName="source" placeholder="Enter Source">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Destination:</label>
+        <input type="text" class="form-control" formControlName="destination" placeholder="Enter Destination">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Departure Date:</label>
+        <input type="date" class="form-control" formControlName="departureDate" placeholder="Select Departure Date">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Arrival Date:</label>
+        <input type="date" class="form-control" formControlName="arrivalDate" placeholder="Select Arrival Date">
+      </div>
+      <div class="col-md-12 mt-4">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+    <hr>
+    <div *ngIf="availableFlights != null && availableFlights.length > 0">
+      <div class="row text-right text-white">
+        <h2>Flight Results</h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="card mb-2" *ngFor="let flight of availableFlights">
+          <div class="card-body row">
+            <div class="col-md-2">
+              <img class="rounded manageHeight"
+                src="data:image/png;base64,{{flight.flightDetails.logoImage}}">
+            </div>
+            <div class="col-md-4">
+              <h5>{{flight.flightDetails.flightId}}</h5>
+              <h5>Flight Name: {{flight.flightDetails.companyName}}</h5>
+              <h5>{{flight.arrival +' - '+ flight.departure }}</h5>
+              <h5>{{flight.duration+'h | non-stop'}}</h5>
+              
+              
+            </div>
+            <div class="col-md-4">
+              <h5>Price: {{flight.fare + ' INR'}}</h5>
+            </div>
+            <div class="col-md-2">
+              
+              <button class="btn btn-primary"(click)="myClickFunction(flight.flightDetails.flightId)" >BookNow</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+  <router-outlet></router-outlet>
+  </div>

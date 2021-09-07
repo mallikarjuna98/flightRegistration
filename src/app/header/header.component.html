@@ -1,0 +1,101 @@
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent" style="background-color: black;">
+    <a class="navbar-brand" href="#">
+     <!-- <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
+  
+        Flight Ticket Booking
+  
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <a href='#' class="btn" role="button" aria-pressed="true">Home</a>
+              
+              <button class="btn"(click)="myClickFunction($event)">
+                <a href='flightshow'>Search Flights</a> 
+              </button>
+              <button type="button" class="btn btn-link" (click)="openLoginModal()">SignIn</button>/
+     <button type="button" class="btn btn-link" (click)="openUserRegModal()">SignUp</button>
+
+<div class="modal"  role="dialog"  [style.display]="loginModalStyle">
+    <div class="modal-dialog" role="document">
+         <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Login Form</h4>
+                  <button type="button" class="close" data-dismiss="modal"  (click)="closeLoginModal()">&times;</button>
+              </div>
+              <div class="modal-body">
+                   <div>
+                        <div class="form-group">
+                             <label for="uid">Username</label>
+                             <input type=text class="form-control" value="" placeholder=username #uname> 
+                        </div> 
+                        <div class="form-group">
+                             <label for="pwd">Password</label>
+                             <input type=password class="form-control"  value="" placeholder=password #pwd> 
+                        </div> 
+                   </div> 
+              </div>
+              <div class="modal-footer">
+                  <button type=button class="btn btn-primary btn-strech" (click)="userLogin(uname.value,pwd.value)">SignIn</button> 
+              </div>
+          </div>
+    </div>
+</div>
+
+<div class="modal"  role="dialog"  [style.display]="regModalStyle">
+    <div class="modal-dialog" role="document">
+         <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">User Registration</h4>
+                  <!--<button type="button" class="close" aria-label="Close" (click)="closeUserRegModal()"><span aria-hidden="true">&times;</span></button>-->
+                  <button type="button" class="close" data-dismiss="modal"  (click)="closeUserRegModal()">&times;</button>
+              </div>
+              <div class="modal-body">
+                   <div>
+                        <div class="form-group">
+                             <input type=text class="form-control" placeholder=username #uid> 
+                        </div> 
+                        <div class="form-group">
+                             <input type=password class="form-control" placeholder=password #pwd1> 
+                        </div> 
+                        <div class="form-group">
+                             <input type=text class="form-control" placeholder=Firstname #fname> 
+                        </div> 
+                        <div class="form-group">
+                             <input type=text class="form-control" placeholder=Lastname #lname> 
+                        </div> 
+                        <div class="form-group">
+                             <input type=text class="form-control" placeholder="Mobile No." #mobile> 
+                        </div> 
+                        <div class="form-group">
+                             <input type=text class="form-control" placeholder=Email #email> 
+                        </div> 
+                        
+                   </div> 
+              </div>
+              <div class="modal-footer">
+                   <button type=button class="btn btn-primary btn-lg" (click)="registerUser(uid.value,pwd1.value,fname.value,lname.value,mobile.value,email.value)">Register</button>  
+              </div>
+          </div>
+    </div>
+</div>
+<ul class="navbar-nav mr-auto"></ul>
+  <li  class="nav-item" style="margin-right: 30px; margin-top: 8px; color: white;">
+     <div *ngIf="isValid">
+          <p>Welcome {{signinname}}</p>
+     </div>
+          
+        
+  </li>
+
+
+      </ul>
+    </div>
+  </nav>
+  <!-- HEADER -->
+  

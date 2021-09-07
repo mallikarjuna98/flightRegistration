@@ -1,0 +1,84 @@
+<style>
+  .wrapper{
+  min-height: 90vh;
+}
+a{
+   color:  #FF8040;
+  }
+  
+  </style>
+<div class="view" style="background-image: url('assets/aeroplane-bg.jpg'); background-repeat: no-repeat; background-size: cover;background-position: center center;">
+  <nav class="navbar navbar-dark">
+    
+</nav>  
+
+
+<div class="container">
+    <div class="row text-right text-white">
+      <h2>Fill the details To Continue Booking</h2>
+    </div>
+    <hr>
+    <form [formGroup]="bookingSearchForm" class="row" (ngSubmit)="onSubmit()">
+      <div class="form-group col-md-2">
+      <label for="pwd">SSN:</label>
+        <input type="text" class="form-control" formControlName="ssn" placeholder="Enter ssn">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="pwd">firstName:</label>
+        <input type="text" class="form-control" formControlName="noOfSeats" placeholder="Enter firstName">
+      </div>
+      <div class="form-group col-md-2">
+      <label for="pwd">lastName:</label>
+        <input type="text" class="form-control" formControlName="noOfSeats" placeholder="Enter lastName">
+      </div>
+      <div class="form-group col-md-1">
+        <label for="pwd">noOfSeats:</label>
+        <input type="text" class="form-control" formControlName="noOfSeats" placeholder="Seats">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="pwd">Mobile No:</label>
+        <input type="text" class="form-control" formControlName="noOfSeats" placeholder="mobileno">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Email Id:</label>
+        <input type="text" class="form-control" formControlName="noOfSeats" placeholder="email id">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Travel Date:</label>
+        <input type="date" class="form-control" formControlName="travelDate" placeholder="Select Travel Date">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pwd">Booking Date:</label>
+        <input type="date" class="form-control" formControlName="bookingDate" placeholder="Select Booking Date">
+      </div>
+      <div class="col-md-12 mt-4">
+        <button class="btn btn-primary"(click)="myClickFunction($event)" >Confirm Booking</button>
+      </div>
+    </form>
+    <hr>
+    <div *ngIf="availableBookings != null && availableBookings.length > 0">
+      <div class="row text-right text-white">
+        <h2>Booking Results</h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="card mb-2" *ngFor="let booking of availableBookings">
+          <div class="card-body row">
+            <div class="col-md-4">
+              <h5>Booking Name: {{booking.passengers.firstName}}</h5>
+              <h5>{{booking.pnr +' - '+ booking.noOfSeats }}</h5>
+            </div>
+            
+            <div class="col-md-2">
+              
+              <button class="btn btn-primary"(click)="myClickFunction($event)" >BookNow</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+  <router-outlet></router-outlet>
+  </div>
